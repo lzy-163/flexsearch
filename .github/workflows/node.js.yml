@@ -57,6 +57,9 @@ jobs:
         cache: 'npm'
     - run: npm install
     - run: npm run build:bundle --if-present
+    - name: Mark ES module output as modules
+      run: |
+        printf '%s\n' '{"type":"module"}' > dist/module/package.json
     - run: npm install
       working-directory: test
     - run: npm run test:github
